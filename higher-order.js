@@ -21,9 +21,10 @@ const mixedNumbers = [6,3,1,7,5,2,6,8,9,4,2,7,9,3,1,8,4,3];
 */
 
 //Code Here
-let evenNumbers // = mixedNumbers.filter(/* Provide Your Callback Here */)
-
-
+let evenNumbers = mixedNumbers.filter(function(element, index, wholeArray) {
+  return element % 2 === 0;
+});
+//let evenNumbers // = mixedNumbers.filter(/* Provide Your Callback Here */)
 
 ////////// PROBLEM 2 //////////
 
@@ -44,7 +45,18 @@ const prices = [15.00, 23.00, 78.00, 34.00, 12.00, 86.00, 12.00, 79.00, 32.00];
 */
 
 //Code Here
-let postTaxPrices // = prices.map(/* Provide Your Callback Here );
+let postTaxPrices = prices.map((val, index, arr) => {
+  return val = val * 1.07
+  //return element to new array...
+})
+
+// let var1 = prices.map((val, index, arr) => {
+//   return val = val * 0;
+// })
+// let var 2 = prices.map((price, index, arr) => {
+//   return price = price + 2;
+// })
+//let postTaxPrices // = prices.map(/* Provide Your Callback Here );
 
 
 
@@ -63,9 +75,20 @@ const populations = [8175133, 3792621, 2695598, 2100263];
 */
 
 //Code Here
-let totalPopulation //  = populations.reduce(/* Provide Your Callback Here */)
+let totalPopulation = populations.reduce((sum, element, index, arr) => {
+  sum = sum + element;
+  return sum;
+},0);
 
+// const numbers = [1, 2, 3, 4];
 
+// let newNumbers1 = numbers.reduce((sum, element, index, arr) => {
+//   sum = sum + element;
+//   return sum;
+// },0);
+
+///
+///numbers.reduce(cb(), )
 
 ////////// PROBLEM 4 //////////
 
@@ -89,10 +112,14 @@ const monstersInYourPocket = [{"monster":"Bulbabunny","CP":156},{"monster":"Bulb
 */
 
 //Code Here
-let myStrongest // = monstersInYourPocket.filter(/* Provide Your Callback Here */)
-
-
-
+let myStrongest = monstersInYourPocket.filter((e, i, arr) => {
+  return e["CP"] > 200;
+})
+console.log(myStrongest)
+// let bulbaIsBest = monstersInYourPocket.filter((e, i, arr) => {
+//   return e["monster"] === "Bulbabunny";
+// })
+// console.log(bulbaIsBest)
 ////////// PROBLEM 5 //////////
 
 // Do not edit code below.
@@ -106,9 +133,16 @@ const orders = [{"price":15,"tax":0.09},{"price":42,"tax":0.07},{"price":56,"tax
   Use a higher order method to get all the order totals after adding in the sales tax. Your answer should be an array of numbers, one total for each order.
 */
 
-let orderTotals // Code here
-
-
+let orderTotals = orders.map((e, index, array) => {
+  return e["price"] * (e["tax"] + 1)
+});
+/// make a new variable for new array to go into
+/// price is 15, sales tax is 9% (or 0.09).  //1.09
+/// price times 1.09 = total,    e["price"] * (e["tax"] + 1) = total
+/// 0.09 + 1 = 1.09
+/// (e["tax"] + 1)
+/// apply tax to each element as its looping thru
+/// Insert info into new array
 
 ////////// PROBLEM 6 //////////
 
@@ -126,6 +160,10 @@ const purchases = [{"owner":"Barry","price":103},{"owner":"Bob","price":75},
   Use a high order method to create to get the sum of bobsTotal.
 */
 
-let bobsTotal //Code Here
-
+let bobsTotal = purchases.reduce((sum, e, i, arr) => {
+  if (e["owner"] === "Bob") {
+    sum += e["price"];
+  }
+  return sum;
+}, 0);
 
